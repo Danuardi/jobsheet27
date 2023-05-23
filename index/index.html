@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pemilihan Kategori dan Komentar</title>
+  <script>
+    function bukaKategori(event) {
+      event.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'kategori/tampil.php', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = xhr.responseText;
+          // Lakukan sesuatu dengan respons dari file kategori/tampil.php
+          console.log(response);
+          document.getElementById('kategoriResult').textContent = response;
+        } else if (xhr.readyState === 4 && xhr.status !== 200) {
+          console.error('Terjadi kesalahan: ' + xhr.status);
+        }
+      };
+      xhr.send();
+    }
+
+    function bukaKomentar(event) {
+      event.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'komentar/tampil.php', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = xhr.responseText;
+          // Lakukan sesuatu dengan respons dari file komentar/tampil.php
+          console.log(response);
+          document.getElementById('komentarResult').textContent = response;
+        } else if (xhr.readyState === 4 && xhr.status !== 200) {
+          console.error('Terjadi kesalahan: ' + xhr.status);
+        }
+      };
+      xhr.send();
+    }
+    function bukaPost(event) {
+      event.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'post/tampil.php', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = xhr.responseText;
+          // Lakukan sesuatu dengan respons dari file komentar/tampil.php
+          console.log(response);
+          document.getElementById('postResult').textContent = response;
+        } else if (xhr.readyState === 4 && xhr.status !== 200) {
+          console.error('Terjadi kesalahan: ' + xhr.status);
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</head>
+<body>
+  <h1>Pemilihan Kategori dan Komentar</h1>
+  <button type="button" onclick="bukaKategori(event)">Buka Kategori</button>
+  <div id="kategoriResult"></div>
+  <br>
+  <button type="button" onclick="bukaKomentar(event)">Buka Komentar</button>
+  <div id="komentarResult"></div>
+  <br>
+  <button type="button" onclick="bukaPost(event)">Buka Komentar</button>
+  <div id="postResult"></div>
+</body>
+</html>
